@@ -1,0 +1,47 @@
+Working through this example
+http://ngnewsletter.wpengine.com/?p=218
+
+http://openweathermap.org/
+http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=2de143494c0b295cca9337e1e96b00e0
+http://api.openweathermap.org/data/2.5/weather?q=Chicago&appid=2de143494c0b295cca9337e1e96b00e0
+-Question
+  city is not getting passed properly
+  When I use San Francisco it gives a parse error?
+
+
+http://www.sitepoint.com/practical-guide-angularjs-directives/
+
+html5 compliant
+<div data-hello-world></div>
+
+OR
+
+<div x-hello-world></div>
+
+example
+http://plnkr.co/edit/14q6WxHyhWuVxEIqwww1?p=preview
+
+app.directive('helloWorld', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    template: '<p style="background-color:{{color}}">Hello World',
+    link: function(scope, elem, attrs) {
+      elem.bind('click', function() {
+        elem.css('background-color', 'white');
+        scope.$apply(function() {
+          scope.color = "white";
+        });
+      });
+      elem.bind('mouseover', function() {
+        elem.css('cursor', 'pointer');
+      });
+    }
+  };
+});
+
+Notice the link function used in the directive. It takes three arguments:
+
+scope – The scope passed to the directive. In this case it’s the same as the parent controller scope.
+elem – The jQLite (a subset of jQuery) wrapped element on which the directive is applied. If you have included jQuery in the HTML before AngularJS is included, this becomes jQuery wrapped instead of jQLite. As the element is already wrapped with jQuery/jQLite, there is no need to again wrap it inside $() for DOM manipulations.
+attrs – An object representing normalized attributes attached to the element on which the directive is applied. For example, you can attach attributes in HTML like: <hello-world some-attribute></hello-world> and access it in the link function as attrs.someAttribute.
