@@ -23,7 +23,7 @@ angular.module("myDirectives", [])
       $scope.getTemp = function(city) {
         $http({
             method: 'JSONP',
-            url: url + hardCity + apiKey
+            url: url + hardCity + apiKey + '&callback=JSON_CALLBACK'
           }).success(function(data) {
             var weather = [];
             angular.forEach(data.list, function(value){
